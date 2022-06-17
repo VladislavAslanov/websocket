@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbc650a9-ec16-4a5e-8bb1-66cd29e85371" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/CryptoTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CryptoTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/List.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +57,7 @@
       <workItem from="1655206019217" duration="11703000" />
       <workItem from="1655237039448" duration="9513000" />
       <workItem from="1655323884722" duration="860000" />
-      <workItem from="1655474156781" duration="3700000" />
+      <workItem from="1655474156781" duration="3883000" />
     </task>
     <servers />
   </component>

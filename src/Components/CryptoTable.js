@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import List from "./List";
 
 const CryptoTable = () => {
+
   const [resultState, setResultState] = useState([])
 
 useEffect(() =>  {
