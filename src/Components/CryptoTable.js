@@ -2,13 +2,6 @@ import React, {useEffect, useState} from 'react';
 import List from "./List";
 
 const CryptoTable = () => {
-  const [cryptoItem, setCryptoItem] = useState({
-      Rank: null,
-      Symbol: null,
-      Title: null,
-      Price: null,
-      Changing: null
-    });
   const [resultState, setResultState] = useState([])
 
 useEffect(() =>  {
