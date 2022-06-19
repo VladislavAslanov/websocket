@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 
 function Search (props)  {
 
@@ -6,7 +6,7 @@ function Search (props)  {
 
   return (
     <div className={'search'}>
-      <label className={'searchLabel'}>Search</label>
+      <label className={'searchLabel'}>Název</label>
       <input type="text" className={'searchInput'} onChange={(e) => setSearch(e.target.value)}/>
       <button onClick={() => props.setFilteredItem(search)}>Vyhledat</button>
     </div>

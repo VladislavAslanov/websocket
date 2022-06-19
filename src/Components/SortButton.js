@@ -1,23 +1,6 @@
 import React, {useEffect} from "react";
 
 const SortButton = (props) => {
-
-
-
-  //   const sortButton = document.getElementById('#sort-btn')
-  //
-  //   sortButton.addEventListener('click', (e) => {
-  //     sortElements()
-  //   })
-  //
-  //   function sortElements () {
-  //     props.all = props.all.sort((a, b) => {
-  //
-  //     })
-  //   }
-
-    
-
   
   return (
     <div className={'sort'}>
@@ -33,7 +16,7 @@ const SortButton = (props) => {
           <option value="">Sestupně</option>
           <option value="">Vzestupně</option>
         </select>
-        <button id='sort-btn' type='button' className='sortButton button'>Sort</button>
+        <button id='sort-btn' type='button' className='sortButton button'>Seřadit</button>
       </form>
     </div>
   )

@@ -8,6 +8,31 @@ const CryptoTable = () => {
   const [resultState, setResultState] = useState([])
   const [filteredItem, setFilteredItem] = useState('')
 
+  useEffect(() => {
+    const pricesWs = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum,tether,ripple,cardano')
+
+    pricesWs.onmessage = function (msg) {
+      let parsed = JSON.parse(msg.data);
+      if (resultState.length > 0) {
+        const dynamicChange = resultState.map((item) => {
+          if (parsed.bitcoin && item.Symbol === 'BTC') {
+            item.Price = parsed.bitcoin;
+          } if (parsed.ethereum && item.Symbol === "ETH") {
+            item.Price = parsed.ethereum
+          } if (parsed.tether && item.Symbol === "USDT") {
+            item.Price = parsed.tether
+          } if (parsed.ripple && item.Symbol === "XRP") {
+            item.Price = parsed.ripple
+          } if (parsed.cardano && item.Symbol === "ADA") {
+            item.Price = parsed.cardano
+          }
+          return item;
+        });
+        setResultState(dynamicChange);
+      }
+    }
+  })
+
 useEffect(() =>  {
   let item = {
     Rank: null,
@@ -39,14 +64,6 @@ useEffect(() =>  {
   xhr.open("get", "https://api.coincap.io/v2/assets");
   xhr.send();
 
-  const pricesWs = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum,monero,litecoin,dogecoin')
-
-  const foo = []
-
-  pricesWs.onmessage = function (msg) {
-      let parsed = JSON.parse(msg.data);
-    foo.push(parsed)
-  }
   }, [])
 
 
@@ -59,7 +76,7 @@ useEffect(() =>  {
           </div>
           <div className="searchComponent">
             <Search setFilteredItem={setFilteredItem}/>
-            <h3 className={'filteredResults'}>Filtered results: {filteredItem}</h3>
+            <h3 className={'filteredResults'}>Filtrované výsledky:</h3>
           </div>
         </div>
 
