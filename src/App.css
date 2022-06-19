@@ -26,15 +26,12 @@ span {
     margin-bottom: 15px;
 }
 
-.parameters {
+.table_items {
     display: block;
-    justify-content: flex-start;
-    align-items: center;
     margin-top: 30px
 }
 .sortButton {
     border: none;
-    border-color: ;
     border-radius: 10px;
     padding: 5px 10px;
     background-color: #A3BCF9;
@@ -42,18 +39,14 @@ span {
     font-family: 'Montserrat', sans-serif;
 }
 
-.parameters_item {
-    margin-bottom: 10px;
-    display: inline;
+.navbar {
+    display: flex;
+    justify-content: space-between;
 }
 
 .parameters_list {
     display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 10px;
-}
-
-.parameters_item:last-child {
-
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
 }

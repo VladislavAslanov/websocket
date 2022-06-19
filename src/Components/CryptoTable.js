@@ -1,9 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import List from "./List";
+import SortButton from "./SortButton";
+import Search from "./Search";
 
 const CryptoTable = () => {
 
   const [resultState, setResultState] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [filteredItem, setFilteredItem] = useState('')
+
+  const handleSearch = (newSearchQuery) => {
+    setSearchQuery(newSearchQuery);
+    resultState.map((item) => {
+        if(resultState.includes(searchQuery)) {
+          setFilteredItem(item)
+        }
+    })
+  };
 
 useEffect(() =>  {
   let item = {
@@ -41,18 +54,26 @@ useEffect(() =>  {
     return (
       <div className={'container'}>
         <h1 className={'heading'}>Tabulka kryptoměn</h1>
-        <form action="">
-          <select name="sort" id="sort" className={'sortButton'}>
-            <option value="rank">Rank</option>
-            <option value="symbol">Zkratka</option>
-            <option value="title">Název</option>
-            <option value="price">Cena</option>
-            <option value="changing">Změna 24h</option>
-          </select>
-        </form>
+        <div className="functions">
+          <div className="sort">
+            <SortButton props={resultState}/>
+          </div>
+          <div className="search">
+            <Search handleSearch={handleSearch}/>
+            <h2 className={'filteredResults'}>Filtered results: {filteredItem}</h2>
+          </div>
+        </div>
+
         <div className={'table'}>
-          <div className={'parameters'}>
-            {resultState.sort((a, b) => +a.Rank < +b.Rank ? -1 : 1).map((res, index) => <List key={index} {...res} />)}
+          <div className={'navbar'}>
+            <div className={'navbar_item rank'}>Rank</div>
+            <div className={'navbar_item symbol'}>Zkratka</div>
+            <div className={'navbar_item title'}>Název</div>
+            <div className={'navbar_item price'}>Cena</div>
+            <div className={'navbar_item changing'}>Změna 24h</div>
+          </div>
+          <div className={'table_items'}>
+            {resultState.map((res, index) => <List key={index} {...res} />)}
           </div>
         </div>
       </div>
