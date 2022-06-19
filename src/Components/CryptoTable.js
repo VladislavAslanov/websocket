@@ -6,17 +6,7 @@ import Search from "./Search";
 const CryptoTable = () => {
 
   const [resultState, setResultState] = useState([])
-  const [searchQuery, setSearchQuery] = useState('')
   const [filteredItem, setFilteredItem] = useState('')
-
-  const handleSearch = (newSearchQuery) => {
-    setSearchQuery(newSearchQuery);
-    resultState.map((item) => {
-        if(resultState.includes(searchQuery)) {
-          setFilteredItem(item)
-        }
-    })
-  };
 
 useEffect(() =>  {
   let item = {
@@ -48,6 +38,15 @@ useEffect(() =>  {
   }
   xhr.open("get", "https://api.coincap.io/v2/assets");
   xhr.send();
+
+  const pricesWs = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum,monero,litecoin,dogecoin')
+
+  const foo = []
+
+  pricesWs.onmessage = function (msg) {
+      let parsed = JSON.parse(msg.data);
+    foo.push(parsed)
+  }
   }, [])
 
 
@@ -55,12 +54,12 @@ useEffect(() =>  {
       <div className={'container'}>
         <h1 className={'heading'}>Tabulka kryptoměn</h1>
         <div className="functions">
-          <div className="sort">
+          <div className="sortComponent">
             <SortButton props={resultState}/>
           </div>
-          <div className="search">
-            <Search handleSearch={handleSearch}/>
-            <h2 className={'filteredResults'}>Filtered results: {filteredItem}</h2>
+          <div className="searchComponent">
+            <Search setFilteredItem={setFilteredItem}/>
+            <h3 className={'filteredResults'}>Filtered results: {filteredItem}</h3>
           </div>
         </div>
 
@@ -73,7 +72,8 @@ useEffect(() =>  {
             <div className={'navbar_item changing'}>Změna 24h</div>
           </div>
           <div className={'table_items'}>
-            {resultState.map((res, index) => <List key={index} {...res} />)}
+            {resultState.filter((item) => filteredItem === "" || item.Title.includes(filteredItem))
+              .map((res, index) => <List key={index} {...res} />)}
           </div>
         </div>
       </div>

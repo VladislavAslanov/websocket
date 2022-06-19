@@ -13,30 +13,63 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-span {
-    display: block;
-}
-
 .container {
     max-width: 1280px;
 }
+
 .heading {
     font-weight: 700;
     margin-top: 25px;
     margin-bottom: 15px;
 }
 
-.table_items {
-    display: block;
-    margin-top: 30px
-}
-.sortButton {
+.button {
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
     background-color: #A3BCF9;
-    appearance: none;
     font-family: 'Montserrat', sans-serif;
+}
+
+.sortComponent{
+    margin-bottom: 25px;
+}
+
+.sortSelect {
+    margin-right: 15px;
+}
+
+.sortButton {
+    cursor: pointer;
+    padding: 7px 15px;
+}
+
+.sortButton:hover {
+    background-color: rgb(171, 171, 219);
+    transition-duration: .5s;
+}
+
+.searchComponent {
+    margin-bottom: 30px;
+}
+
+.searchLabel {
+    margin-right: 15px;
+}
+
+.searchInput {
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.filteredResults {
+    margin-bottom: 50px;
+}
+.table_items {
+    display: block;
+    margin-top: 30px
 }
 
 .navbar {
@@ -44,7 +77,7 @@ span {
     justify-content: space-between;
 }
 
-.parameters_list {
+.parametersList {
     display: flex;
     align-items: center;
     justify-content: center;
