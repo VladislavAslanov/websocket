@@ -7,6 +7,7 @@ const CryptoTable = () => {
 
   const [resultState, setResultState] = useState([])
   const [filteredItem, setFilteredItem] = useState('')
+  const [asc, setAsc] = useState(1)
 
   useEffect(() => {
     const pricesWs = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum,tether,ripple,cardano')
@@ -34,22 +35,13 @@ const CryptoTable = () => {
   })
 
 useEffect(() =>  {
-  let item = {
-    Rank: null,
-    Symbol: null,
-    Title: null,
-    Price: null,
-    Changing: null,
-  };
-
-  let itemList = [];
   const xhr = new XMLHttpRequest()
-
   xhr.onreadystatechange = async function () {
     if(xhr.readyState === 4 && xhr.status === 200) {
+      let itemList = [];
       let result = JSON.parse(this.responseText);
       for(let i = 0; i < result.data.length; i++) {
-        item = {
+        const item = {
           Rank: result.data[i].rank,
           Symbol: result.data[i].symbol,
           Title: result.data[i].name,
@@ -63,16 +55,14 @@ useEffect(() =>  {
   }
   xhr.open("get", "https://api.coincap.io/v2/assets");
   xhr.send();
-
   }, [])
-
 
     return (
       <div className={'container'}>
         <h1 className={'heading'}>Tabulka kryptoměn</h1>
         <div className="functions">
           <div className="sortComponent">
-            <SortButton props={resultState}/>
+            <SortButton setAsc={setAsc} asc={asc}/>
           </div>
           <div className="searchComponent">
             <Search setFilteredItem={setFilteredItem}/>
@@ -89,7 +79,9 @@ useEffect(() =>  {
             <div className={'navbar_item changing'}>Změna 24h</div>
           </div>
           <div className={'table_items'}>
-            {resultState.filter((item) => filteredItem === "" || item.Title.includes(filteredItem))
+            {resultState
+              .filter((item) => filteredItem === "" || item.Title.toLocaleLowerCase().includes(filteredItem.toLocaleLowerCase()))
+              .sort((a, b) => Number(a.Rank) < Number(b.Rank) ? -asc : asc)
               .map((res, index) => <List key={index} {...res} />)}
           </div>
         </div>

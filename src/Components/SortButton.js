@@ -1,7 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 const SortButton = (props) => {
-  
+  const [selectedOrderBy, setSelectedOrderBy] = useState('asc')
+
+  const onclick = () => {
+    props.setAsc(-props.asc)
+  }
+
   return (
     <div className={'sort'}>
       <form action="" className={'sortForm'}>
@@ -12,11 +17,13 @@ const SortButton = (props) => {
           <option value="price">Cena</option>
           <option value="changing">Změna 24h</option>
         </select>
-        <select name="" id="" className="filter" className={'sortSelect button'}>
-          <option value="">Sestupně</option>
-          <option value="">Vzestupně</option>
+        <select name="" id="" className="filter" className={'sortSelect button'} onChange={(e) => {
+          setSelectedOrderBy(e.target.value);
+        } } defaultValue={selectedOrderBy}>
+          <option value="asc">Vzestupně</option>
+          <option value="des">Sestupně</option>
         </select>
-        <button id='sort-btn' type='button' className='sortButton button'>Seřadit</button>
+        <button id='sort-btn' type='button' className='sortButton button' onClick={onclick}>Seřadit</button>
       </form>
     </div>
   )
