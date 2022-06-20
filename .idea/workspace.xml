@@ -4,7 +4,7 @@
     <list default="true" id="fbc650a9-ec16-4a5e-8bb1-66cd29e85371" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/CryptoTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CryptoTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SortButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SortButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/List.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +66,7 @@
       <workItem from="1655592661912" duration="625000" />
       <workItem from="1655624602569" duration="21160000" />
       <workItem from="1655679680257" duration="57000" />
+      <workItem from="1655725202033" duration="1080000" />
     </task>
     <servers />
   </component>

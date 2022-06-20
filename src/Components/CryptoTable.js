@@ -16,16 +16,16 @@ const CryptoTable = () => {
       let parsed = JSON.parse(msg.data);
       if (resultState.length > 0) {
         const dynamicChange = resultState.map((item) => {
-          if (parsed.bitcoin && item.Symbol === 'BTC') {
-            item.Price = parsed.bitcoin;
-          } if (parsed.ethereum && item.Symbol === "ETH") {
-            item.Price = parsed.ethereum
-          } if (parsed.tether && item.Symbol === "USDT") {
-            item.Price = parsed.tether
-          } if (parsed.ripple && item.Symbol === "XRP") {
-            item.Price = parsed.ripple
-          } if (parsed.cardano && item.Symbol === "ADA") {
-            item.Price = parsed.cardano
+          if (parsed.bitcoin && item.symbol === 'BTC') {
+            item.price = parsed.bitcoin;
+          } if (parsed.ethereum && item.symbol === "ETH") {
+            item.price = parsed.ethereum
+          } if (parsed.tether && item.symbol === "USDT") {
+            item.price = parsed.tether
+          } if (parsed.ripple && item.symbol === "XRP") {
+            item.price = parsed.ripple
+          } if (parsed.cardano && item.symbol === "ADA") {
+            item.price = parsed.cardano
           }
           return item;
         });
@@ -42,11 +42,11 @@ useEffect(() =>  {
       let result = JSON.parse(this.responseText);
       for(let i = 0; i < result.data.length; i++) {
         const item = {
-          Rank: result.data[i].rank,
-          Symbol: result.data[i].symbol,
-          Title: result.data[i].name,
-          Price: result.data[i].priceUsd,
-          Changing: result.data[i].changePercent24Hr,
+          rank: result.data[i].rank,
+          symbol: result.data[i].symbol,
+          title: result.data[i].name,
+          price: result.data[i].priceUsd,
+          changing: result.data[i].changePercent24Hr,
         }
         itemList.push(item);
       }
@@ -80,8 +80,8 @@ useEffect(() =>  {
           </div>
           <div className={'table_items'}>
             {resultState
-              .filter((item) => filteredItem === "" || item.Title.toLocaleLowerCase().includes(filteredItem.toLocaleLowerCase()))
-              .sort((a, b) => Number(a.Rank) < Number(b.Rank) ? -asc : asc)
+              .filter((item) => filteredItem === "" || item.title.toLocaleLowerCase().includes(filteredItem.toLocaleLowerCase()))
+              .sort((a, b) => Number(a.rank) < Number(b.rank) ? -asc : asc)
               .map((res, index) => <List key={index} {...res} />)}
           </div>
         </div>
