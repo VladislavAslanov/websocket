@@ -29,6 +29,7 @@ body {
     padding: 5px 10px;
     background-color: #A3BCF9;
     font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
 }
 
 .sortComponent{
@@ -58,7 +59,7 @@ body {
 }
 
 .searchInput {
-    margin-bottom: 15px;
+    margin: 0px 15px 15px 0px;
     border: none;
     border-radius: 5px;
     padding: 5px;

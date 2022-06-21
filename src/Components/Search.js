@@ -8,7 +8,7 @@ function Search (props)  {
     <div className={'search'}>
       <label className={'searchLabel'}>Název</label>
       <input type="text" className={'searchInput'} onChange={(e) => setSearch(e.target.value)}/>
-      <button onClick={() => props.setFilteredItem(search)}>Vyhledat</button>
+      <button onClick={() => props.setFilteredItem(search)} className={'button'}>Vyhledat</button>
     </div>
   )
 }
